@@ -4,14 +4,14 @@
 package com.github.cbpos1989.examples;
 
 /**
- * @author User1
+ * App to demonstrate that primitves pass by value
+ * 
+ * @author Colm O'Sullivan
  *
  */
 public class ByValueApp {
 
-	/**
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		int num = 0;
 		ByValueApp ba = new ByValueApp();
