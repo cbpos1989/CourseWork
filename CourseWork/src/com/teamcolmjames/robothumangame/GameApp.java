@@ -5,6 +5,7 @@ package com.teamcolmjames.robothumangame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -23,8 +24,8 @@ public class GameApp {
 	private int robotTotalPower;
 	private int humanTotalPower;
 	private final int MAX_LIFEFORM_POWER = 101;
-	private final String HUMAN_NAMES_PATH = "/resources/FirstNames.txt";
-	private final String ROBOT_NAMES_PATH = "/resources/RobotNames.txt";
+	private final String HUMAN_NAMES_PATH = "/Users/User1/git/CourseWork/FirstNames.txt";
+	private final String ROBOT_NAMES_PATH = "/Users/User1/git/CourseWork/RobotNames.txt";
 	//private final String HUMAN_NAMES_PATH = "/Users/User1/Desktop/FirstNames.txt";
 	//private final String ROBOT_NAMES_PATH = "/Users/User1/Desktop/RobotNames.txt";
 
@@ -34,6 +35,7 @@ public class GameApp {
 	}
 
 	private void initialiseGame(){
+		
 		populateList(firstNames, HUMAN_NAMES_PATH);
 		populateList(robitNames, ROBOT_NAMES_PATH);
 		
