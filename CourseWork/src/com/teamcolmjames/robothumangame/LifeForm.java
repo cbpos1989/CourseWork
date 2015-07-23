@@ -21,6 +21,10 @@ public class LifeForm {
 	public int getPower() {
 		return power;
 	}
+	
+	public void setPower(int power) {
+		this.power = power;
+	}
 
 	public int getUniqueID() {
 		return uniqueID;

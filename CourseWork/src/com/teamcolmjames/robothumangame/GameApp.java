@@ -4,6 +4,7 @@
 package com.teamcolmjames.robothumangame;
 
 import java.util.Random;
+import java.util.Scanner;
 
 
 /**
@@ -16,31 +17,49 @@ public class GameApp {
 	private int robotTotalPower;
 	private int humanTotalPower;
 	private final int MAX_LIFEFORM_POWER = 101;
-	
+
 	public static void main(String[] args) {
 		GameApp ga = new GameApp();
 		ga.initialiseGame();
-
 	}
-	
+
 	private void initialiseGame(){
 		populateArray(humans, true);
 		populateArray(robots, false);
 		printArray(humans);
 		printArray(robots);
-		runBattle();
-		printResults();
+		gameMenu();
 	}
-	
+
+	private void gameMenu(){
+		Scanner scan = new Scanner(System.in);
+		boolean invalidInput = true;
+		do {
+			System.out.println("1) Play Classic \n2) Play Last Man Standing");
+			System.out.print("Enter a choice: ");
+			int userInput = scan.nextInt();
+			if (userInput == 1) {
+				invalidInput = false;
+				runClassicBattle();
+			} else if (userInput == 2) {
+				invalidInput = false;
+				runLMSBattle();
+			} else {
+				invalidInput = true;
+				System.out.println("Enter valid input!\n");
+			} 
+		} while (invalidInput);
+	}
+
 	private int randomGenerator(int index){
 		Random rand = new Random();
 		return rand.nextInt(index);
 	}
-	
+
 	private void populateArray(LifeForm[] lifeforms, boolean creatingHumans){
 		int uniqueID = 100;
 		for(int i = 0; i < lifeforms.length; ++i){
-			
+
 			if(creatingHumans){
 				lifeforms[i] = new Human(randomGenerator(MAX_LIFEFORM_POWER),uniqueID++,"John");
 				humanTotalPower += lifeforms[i].getPower();
@@ -51,7 +70,7 @@ public class GameApp {
 			}
 		}
 	}
-	private void runBattle(){
+	private void runClassicBattle(){
 		for(int i = 0; i < robots.length; ++i){
 			if(robots[i].getPower() > humans[i].getPower()){
 				Robot.robotWins++;
@@ -61,30 +80,76 @@ public class GameApp {
 				LifeForm.draws++;
 			}
 		}
-	}
-	
-	private void printResults(){
-		System.out.println("\nRobots total power: " + robotTotalPower + "\nHumans total power: " + humanTotalPower);
 		
+		printResults(true);
+		
+	}
+	private void runLMSBattle(){
+		
+		
+		while (!checkForWinner()) {
+			for (int i = 0, j = 0; i < robots.length && j < humans.length;) {
+				if (robots[i].getPower() > humans[j].getPower()) {
+					Robot.robotWins++;
+					j++;
+					robots[i].setPower(robots[i].getPower() / 2);
+				} else if (humans[j].getPower() > robots[i].getPower()) {
+					Human.humanWins++;
+					i++;
+					humans[j].setPower(humans[j].getPower() / 2);
+				} else {
+					LifeForm.draws++;
+					i++;
+					j++;
+				}
+			}
+		} 
+
+		printResults(false);
+
+	}
+
+		
+		
+		
+	
+	
+	private boolean checkForWinner(){
+		if((Robot.robotWins + LifeForm.draws) >= 499){
+			return true;
+		} else if ((Human.humanWins + LifeForm.draws) >= 499){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private void printResults(boolean isClassicBattle){
+		System.out.println("\nRobots total power: " + robotTotalPower + "\nHumans total power: " + humanTotalPower);
+
 		if(Robot.robotWins > Human.humanWins){
-		System.out.println("\nThe robots won!");
+			System.out.println("\nThe robots won!");
 		}else if(Human.humanWins > Robot.robotWins){
 			System.out.println("\nThe humans won!");
 		}else{
 			System.out.println("\nIt was a draw.");
 		}
-		
-		System.out.println("\nHuman wins: " + Human.humanWins + "\nHuman losses: " + Robot.robotWins);
-		System.out.println("\nRobot wins: " + Robot.robotWins + "\nRobot losses: " + Human.humanWins);
-		System.out.println("\nNumber of draws: " + LifeForm.draws);
+
+		if (isClassicBattle) {
+			System.out.println("\nHuman wins: " + Human.humanWins + "\nHuman losses: " + Robot.robotWins);
+			System.out.println("\nRobot wins: " + Robot.robotWins + "\nRobot losses: " + Human.humanWins);
+			System.out.println("\nNumber of draws: " + LifeForm.draws);
+		}else{
+			System.out.println("There are " + (humans.length - (Robot.robotWins + LifeForm.draws)) + " humans left alive.");
+			System.out.println("There are " + (robots.length - (Human.humanWins + LifeForm.draws)) + " robots left functioning.");
+
+		}
 	}
+	
 	//For testing purposes
 	private void printArray(LifeForm[] lifeforms){
 		for(LifeForm lf: lifeforms){
 			System.out.println(lf);
 		}
 	}
-	
-	
-
 }
