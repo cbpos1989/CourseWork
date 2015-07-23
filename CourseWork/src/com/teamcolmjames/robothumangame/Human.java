@@ -9,7 +9,6 @@ public class Human extends LifeForm{
 	private String name;
 	public static int humanWins;
 	
-	
 	public Human(){
 		this(-1, -1, "NA");
 	}

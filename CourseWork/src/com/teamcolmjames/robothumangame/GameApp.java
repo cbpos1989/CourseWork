@@ -3,6 +3,10 @@
  */
 package com.teamcolmjames.robothumangame;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,6 +18,7 @@ import java.util.Scanner;
 public class GameApp {
 	private LifeForm[] robots = new LifeForm[500];
 	private LifeForm[] humans = new LifeForm[500];
+	private ArrayList<String> firstNames = new ArrayList<String>();
 	private int robotTotalPower;
 	private int humanTotalPower;
 	private final int MAX_LIFEFORM_POWER = 101;
@@ -29,6 +34,23 @@ public class GameApp {
 		printArray(humans);
 		printArray(robots);
 		gameMenu();
+	}
+	
+	private String generateName(int index){
+		try {
+			Scanner fNames = new Scanner(new File("FirstNames.txt"));
+			
+			while(fNames.hasNext()){
+				this.firstNames.add(fNames.next());
+			}
+			
+			Collections.shuffle(firstNames);
+		} catch (FileNotFoundException fnfe) {
+			// TODO Auto-generated catch block
+			fnfe.printStackTrace();
+		}
+		
+		return firstNames.get(index);
 	}
 
 	private void gameMenu(){
@@ -61,7 +83,7 @@ public class GameApp {
 		for(int i = 0; i < lifeforms.length; ++i){
 
 			if(creatingHumans){
-				lifeforms[i] = new Human(randomGenerator(MAX_LIFEFORM_POWER),uniqueID++,"John");
+				lifeforms[i] = new Human(randomGenerator(MAX_LIFEFORM_POWER),uniqueID++,generateName(i));
 				humanTotalPower += lifeforms[i].getPower();
 			} else{
 				String model = randomGenerator(11)%2 == 0 ? "Type A" : "Type B";
