@@ -19,9 +19,14 @@ public class GameApp {
 	private LifeForm[] robots = new LifeForm[500];
 	private LifeForm[] humans = new LifeForm[500];
 	private ArrayList<String> firstNames = new ArrayList<String>();
+	private ArrayList<String> robitNames = new ArrayList<String>();
 	private int robotTotalPower;
 	private int humanTotalPower;
 	private final int MAX_LIFEFORM_POWER = 101;
+	private final String HUMAN_NAMES_PATH = "/resources/FirstNames.txt";
+	private final String ROBOT_NAMES_PATH = "/resources/RobotNames.txt";
+	//private final String HUMAN_NAMES_PATH = "/Users/User1/Desktop/FirstNames.txt";
+	//private final String ROBOT_NAMES_PATH = "/Users/User1/Desktop/RobotNames.txt";
 
 	public static void main(String[] args) {
 		GameApp ga = new GameApp();
@@ -29,28 +34,46 @@ public class GameApp {
 	}
 
 	private void initialiseGame(){
+		populateList(firstNames, HUMAN_NAMES_PATH);
+		populateList(robitNames, ROBOT_NAMES_PATH);
+		
 		populateArray(humans, true);
 		populateArray(robots, false);
 		printArray(humans);
 		printArray(robots);
+	
+		
 		gameMenu();
 	}
 	
-	private String generateName(int index){
+	private void populateList(ArrayList<String> list, String path){
 		try {
-			Scanner fNames = new Scanner(new File("FirstNames.txt"));
+			
+			Scanner fNames = new Scanner(new File(path));
 			
 			while(fNames.hasNext()){
-				this.firstNames.add(fNames.next());
+				list.add(fNames.next());
 			}
 			
-			Collections.shuffle(firstNames);
-		} catch (FileNotFoundException fnfe) {
+			Collections.shuffle(list);
+			
+			//System.out.println("Array Size: " + list.size());
+			//System.out.println("Array Element 0: " + list.get(0));
+			
+			fNames.close();
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			fnfe.printStackTrace();
+			e.printStackTrace();
 		}
 		
-		return firstNames.get(index);
+		
+	}
+	
+	private String generateName(ArrayList<String> list,int index){
+		
+		//System.out.println(firstNames.get(index));
+		
+		return list.get(index);
 	}
 
 	private void gameMenu(){
@@ -83,11 +106,11 @@ public class GameApp {
 		for(int i = 0; i < lifeforms.length; ++i){
 
 			if(creatingHumans){
-				lifeforms[i] = new Human(randomGenerator(MAX_LIFEFORM_POWER),uniqueID++,generateName(i));
+				lifeforms[i] = new Human(randomGenerator(MAX_LIFEFORM_POWER),uniqueID++,generateName(firstNames,i));
 				humanTotalPower += lifeforms[i].getPower();
 			} else{
 				String model = randomGenerator(11)%2 == 0 ? "Type A" : "Type B";
-				lifeforms[i] = new Robot(randomGenerator(MAX_LIFEFORM_POWER),uniqueID++,model);
+				lifeforms[i] = new Robot(randomGenerator(MAX_LIFEFORM_POWER),uniqueID++,generateName(robitNames,i) + " " + model);
 				robotTotalPower += lifeforms[i].getPower();
 			}
 		}
@@ -132,10 +155,6 @@ public class GameApp {
 	}
 
 		
-		
-		
-	
-	
 	private boolean checkForWinner(){
 		if((Robot.robotWins + LifeForm.draws) >= 499){
 			return true;
