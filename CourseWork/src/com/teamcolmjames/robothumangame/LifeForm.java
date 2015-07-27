@@ -6,6 +6,7 @@ package com.teamcolmjames.robothumangame;
 public class LifeForm {
 	
 	int power;
+	int life = 100;
 	int uniqueID;
 	public static int draws;
 	
@@ -16,6 +17,13 @@ public class LifeForm {
 	public LifeForm(int power, int uniqueID){
 		this.power = power;
 		this.uniqueID = uniqueID;
+	}
+	public int getLife() {
+		return life;
+	}
+
+	public void setLife(int life) {
+		this.life = life;
 	}
 
 	public int getPower() {

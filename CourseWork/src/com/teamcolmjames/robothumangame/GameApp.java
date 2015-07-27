@@ -17,8 +17,8 @@ import java.util.Scanner;
  * @author Colm O'Sullivan & James MacMahon
  */
 public class GameApp {
-	private LifeForm[] robots = new LifeForm[500];
-	private LifeForm[] humans = new LifeForm[500];
+	private LifeForm[] robots = new LifeForm[50];
+	private LifeForm[] humans = new LifeForm[50];
 	private ArrayList<String> firstNames = new ArrayList<String>();
 	private ArrayList<String> robitNames = new ArrayList<String>();
 	private int robotTotalPower;
@@ -134,21 +134,44 @@ public class GameApp {
 	private void runLMSBattle(){
 		
 		
-		while (!checkForWinner()) {
+		while (checkForWinner()) {
+			int battleNum = 0;
 			for (int i = 0, j = 0; i < robots.length && j < humans.length;) {
-				if (robots[i].getPower() > humans[j].getPower()) {
-					Robot.robotWins++;
+				int currentRobotPower = robots[i].getPower();
+				int currentHumanPower = humans[j].getPower();
+			
+				System.out.println("Battle No." + (battleNum++));
+				
+				
+				if (currentRobotPower > currentHumanPower) {
+					Robot.robotWins+=1;
 					j++;
-					robots[i].setPower(robots[i].getPower() / 2);
-				} else if (humans[j].getPower() > robots[i].getPower()) {
-					Human.humanWins++;
+					robots[i].setLife(robots[i].getLife() - (currentHumanPower/2));
+					Robot temp = (Robot) robots[i];
+					System.out.println(temp.getModelName() + " is the victor");
+					System.out.println(temp.getModelName() + " health is: " + temp.getLife());
+					
+					if(checkHealth(robots[i].getLife())){
+						i++;
+					}
+				} else if (currentHumanPower > currentRobotPower) {
+					Human.humanWins+=1;
 					i++;
-					humans[j].setPower(humans[j].getPower() / 2);
+					humans[j].setLife(humans[j].getLife() - (currentRobotPower/2));
+					Human temp = (Human) humans[j];
+					System.out.println(temp.getName() + " is the victor");
+					System.out.println(temp.getName() + " health is: " + temp.getLife());
+					if(checkHealth(humans[j].getLife())){
+						j++;
+					}
 				} else {
 					LifeForm.draws++;
 					i++;
 					j++;
 				}
+				
+				System.out.println(("Robot Check " + Robot.robotWins) + LifeForm.draws);
+				System.out.println(("Human Check " + Human.humanWins)+ LifeForm.draws);
 			}
 		} 
 
@@ -156,14 +179,24 @@ public class GameApp {
 
 	}
 
+	private boolean checkHealth(int life){
+		if(life <= 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 		
 	private boolean checkForWinner(){
-		if((Robot.robotWins + LifeForm.draws) >= 499){
-			return true;
-		} else if ((Human.humanWins + LifeForm.draws) >= 499){
-			return true;
-		} else {
+		if((Robot.robotWins + LifeForm.draws) >= 49){
+			//System.out.println("Robot Check " +Robot.robotWins + LifeForm.draws);
 			return false;
+		} else if ((Human.humanWins + LifeForm.draws) >= 49){
+			//System.out.println("Human Check " + Human.humanWins + LifeForm.draws);
+			return false;
+			
+		} else {
+			return true;
 		}
 	}
 
