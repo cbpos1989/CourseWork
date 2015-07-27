@@ -135,16 +135,17 @@ public class GameApp {
 		
 		
 		while (checkForWinner()) {
-			int battleNum = 0;
+			int battleNum = 1;
 			for (int i = 0, j = 0; i < robots.length && j < humans.length;) {
 				int currentRobotPower = robots[i].getPower();
 				int currentHumanPower = humans[j].getPower();
 			
 				System.out.println("Battle No." + (battleNum++));
+				System.out.println("Human Power: " + currentHumanPower + " Robot Power: " + currentRobotPower);
 				
 				
 				if (currentRobotPower > currentHumanPower) {
-					Robot.robotWins+=1;
+					Robot.robotWins++;
 					j++;
 					robots[i].setLife(robots[i].getLife() - (currentHumanPower/2));
 					Robot temp = (Robot) robots[i];
@@ -152,17 +153,17 @@ public class GameApp {
 					System.out.println(temp.getModelName() + " health is: " + temp.getLife());
 					
 					if(checkHealth(robots[i].getLife())){
-						i++;
+						//i++;
 					}
 				} else if (currentHumanPower > currentRobotPower) {
-					Human.humanWins+=1;
+					Human.humanWins++;
 					i++;
 					humans[j].setLife(humans[j].getLife() - (currentRobotPower/2));
 					Human temp = (Human) humans[j];
 					System.out.println(temp.getName() + " is the victor");
 					System.out.println(temp.getName() + " health is: " + temp.getLife());
 					if(checkHealth(humans[j].getLife())){
-						j++;
+						//j++;
 					}
 				} else {
 					LifeForm.draws++;
@@ -170,8 +171,8 @@ public class GameApp {
 					j++;
 				}
 				
-				System.out.println(("Robot Check " + Robot.robotWins) + LifeForm.draws);
-				System.out.println(("Human Check " + Human.humanWins)+ LifeForm.draws);
+				System.out.println("Robot Check " + (Robot.robotWins + LifeForm.draws));
+				System.out.println("Human Check " + (Human.humanWins+ LifeForm.draws));
 			}
 		} 
 
@@ -194,7 +195,6 @@ public class GameApp {
 		} else if ((Human.humanWins + LifeForm.draws) >= 49){
 			//System.out.println("Human Check " + Human.humanWins + LifeForm.draws);
 			return false;
-			
 		} else {
 			return true;
 		}
