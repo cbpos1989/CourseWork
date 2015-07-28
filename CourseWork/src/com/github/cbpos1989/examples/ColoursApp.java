@@ -35,7 +35,7 @@ public class ColoursApp{
 	private void userInput(){
 		boolean invalidInput = true;
 		Scanner scan = new Scanner(System.in);
-
+		
 		do{
 			System.out.print("Pick a Colour: ");
 			String userInput = scan.nextLine();
