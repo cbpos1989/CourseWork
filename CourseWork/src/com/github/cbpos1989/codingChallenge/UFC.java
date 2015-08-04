@@ -1,23 +1,20 @@
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.codingChallenge;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UFC {
 
-	
-	
 	public static void main(String[] args){
-		int weightChoice = 0; 
 		float userWeightPounds = 0.0F;
 		boolean invalidInput = true;
 		Scanner scan = new Scanner(System.in);
-		System.out.println("1.Enter Weight in Pounds(lb): \n2.Enter Weight in Kilograms(kg): ");
+		System.out.println("1.Enter weight in pounds: \n2.Enter weight in kg: ");
 		do{
 			
 			System.out.print("Please enter choice: ");
-			weightChoice = scan.nextInt();
-			
+			int weightChoice = scan.nextInt();
+			//System.out.println(weightChoice);
+
 			if(weightChoice == 1){
 				System.out.print("Enter your weight(lb): ");
 				userWeightPounds = scan.nextInt();

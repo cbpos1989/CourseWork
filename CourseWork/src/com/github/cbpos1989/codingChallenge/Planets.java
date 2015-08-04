@@ -1,11 +1,10 @@
-package com.github.cbpos1989.examples;
-
-/**
- * Enum to hold list of planets
+package com.github.cbpos1989.codingChallenge;
+/*
+ * Enum to hold planets that will be used in PlanetApp class.
  * 
- * @author Colm O'Sullivan
- *
+ * @author Colm O'Sullivan & Mubasher Mohammed
  */
+
 
 public enum Planets{
 
