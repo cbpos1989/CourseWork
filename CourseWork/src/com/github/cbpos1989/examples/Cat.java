@@ -34,4 +34,8 @@ public class Cat extends Animal{
 	public String makeNoise(){
 		return super.makeNoise() + " and I say, Meow";
 	}
+	
+	public void spawn(){
+		System.out.println(super.getName() + " is Spawing...");
+	}
 }

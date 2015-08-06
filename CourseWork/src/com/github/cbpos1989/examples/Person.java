@@ -36,4 +36,8 @@ public class Person extends Animal{
 	public String makeNoise(){
 		return super.makeNoise() + " and I say Hello";
 	}
+	
+	public void spawn(){
+		System.out.println(super.getName() + " is Spawing...");
+	}
 }

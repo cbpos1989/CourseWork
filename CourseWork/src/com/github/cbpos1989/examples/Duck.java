@@ -35,4 +35,7 @@ public class Duck extends Animal{
 		return super.makeNoise() + " and I say quack!";
 	}
 
+	public void spawn(){
+		System.out.println(super.getName() + " is Spawing...");
+	}
 }

@@ -34,4 +34,8 @@ public class Snake extends Animal{
 	public String makeNoise(){
 		return super.makeNoise() + " do you like apples?";
 	}
+	
+	public void spawn(){
+		System.out.println(super.getName() + " is Spawing...");
+	}
 }

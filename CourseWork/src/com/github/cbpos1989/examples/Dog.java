@@ -33,4 +33,8 @@ public class Dog extends Animal{
 	public String makeNoise(){
 		return super.makeNoise() + " and I like to bark";
 	}
+	
+	public void spawn(){
+		System.out.println(super.getName() + " is Spawing...");
+	}
 }

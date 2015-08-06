@@ -9,7 +9,7 @@ package com.github.cbpos1989.examples;
  * @author Colm O'Sullivan
  *
  */
-public abstract class Animal {
+public abstract class Animal implements Spawnable{
 	private String name;
 	private String species;
 	private boolean isSleeping;
