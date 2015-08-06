@@ -62,10 +62,12 @@ public class InheritanceApp {
 		
 		
 		for(Animal a: animals){
+			a.spawn();
 			System.out.println(a.makeNoise());
 			System.out.println(a.move());
 			a.sleep(hour);
 			System.out.println("");
+		
 		}
 		
 	}
