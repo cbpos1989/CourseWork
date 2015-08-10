@@ -27,6 +27,7 @@ public class HelloWorldGUI {
 		public void paintComponet(Graphics g){
 			super.paintComponent(g);
 			g.drawString("Hello World", 20, 30);
+			
 		}
 	}
 	
