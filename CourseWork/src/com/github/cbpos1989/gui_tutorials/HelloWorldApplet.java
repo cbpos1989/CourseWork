@@ -21,8 +21,28 @@ public class HelloWorldApplet extends JApplet {
 	
 	public void init(){
 		String value;
+		value = getParameter("message");
 		
+		if (value == null){
+			message = "Hello World!";
+		} else {
+			message = value;
+		} 
 		
+		value = getParameter("font");
+		
+		if(value == null){
+			fontName = "SansSerif";
+		} else {
+			fontName = value;
+		}
+		
+		value = getParameter("size");
+		try{
+			
+		} catch (NumberFormatException e) {
+			fontSize = 20;
+		}
 		
 		HelloWorldPanel content = new HelloWorldPanel();
 		setContentPane(content);

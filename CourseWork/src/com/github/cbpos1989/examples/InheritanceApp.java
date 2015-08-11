@@ -50,12 +50,15 @@ public class InheritanceApp {
 	
 	private void startAction(){
 		int hour = time.get(Calendar.HOUR_OF_DAY);
+		int min = time.get(Calendar.MINUTE);
+	
+		
 		String outputTime = "It is ";
 		
 		if(isPM(hour)){
-			outputTime += (hour -12) + " P.M.";	
+			outputTime += (hour -12) + ":" + min + " P.M.";	
 		} else {
-			outputTime += " A.M.";	
+			outputTime += hour + ":" + min + " A.M.";	
 		}
 		
 		System.out.println(outputTime + "\n");
@@ -64,8 +67,10 @@ public class InheritanceApp {
 		for(Animal a: animals){
 			a.spawn();
 			System.out.println(a.makeNoise());
-			System.out.println(a.move());
 			a.sleep(hour);
+			if (!a.isSleeping()) {
+				System.out.println(a.move());
+			}
 			System.out.println("");
 		
 		}

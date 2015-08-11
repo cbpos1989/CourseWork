@@ -11,9 +11,6 @@ public class Tree {
 	private String species;
 	private int trunkDiameter;
 	private boolean evergreen;
-	private int water;
-	private int carbonDioxide;
-	private int sunlight;
 	private int sugar;
 	
 	public String getSpecies(){

@@ -1,6 +1,6 @@
 package com.github.cbpos1989.codingChallenge;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,14 +12,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.WindowConstants;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
 
 public class CeasarCipherApp extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9172851217120221457L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
