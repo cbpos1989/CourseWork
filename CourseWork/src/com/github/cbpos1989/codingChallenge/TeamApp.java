@@ -33,7 +33,7 @@ public class TeamApp{
 		populateArray();
 		printArray();	
 		
-		boolean isRunning = true;
+		
 		
 		/*do{
 			System.out.println("What would you like to do?");
@@ -67,6 +67,8 @@ public class TeamApp{
 					break;
 			}
 		}while(isRunning);//*/
+		
+		scan.close();
 	}
 
 	private int leagueChoice(){

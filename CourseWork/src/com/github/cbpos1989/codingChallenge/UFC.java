@@ -45,5 +45,7 @@ public class UFC {
 		}else{
 			System.out.println("You are not eligible to fight in any category.");
 		}
+		
+		scan.close();
 	}
 }
