@@ -25,6 +25,7 @@ public class RandomStringsPanel extends JPanel {
 
 	private String message;
 	private Font font1, font2, font3, font4, font5;
+
 	
 	public RandomStringsPanel(){
 		this(null);

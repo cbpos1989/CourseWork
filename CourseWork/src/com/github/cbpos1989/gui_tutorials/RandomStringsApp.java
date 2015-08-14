@@ -29,10 +29,11 @@ public class RandomStringsApp{
 	private void startProgram() {
 		JFrame window = new JFrame("Radom Strings");
 		RandomStringsPanel content = new RandomStringsPanel("Hello World");
+		content.addMouseListener(new RepaintOnClick());
 		window.setContentPane(content);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setLocation((screenWidth/2) - 150, (screenHeight/2) - 120);
-		window.setSize(300,240);
+		window.setLocation((screenWidth/2) - 250, (screenHeight/2) - 180);
+		window.setSize(500,360);
 		window.setVisible(true);
 	}
 
