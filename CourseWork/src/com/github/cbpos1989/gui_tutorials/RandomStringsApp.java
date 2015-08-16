@@ -3,8 +3,11 @@
  */
 package com.github.cbpos1989.gui_tutorials;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 
@@ -29,7 +32,20 @@ public class RandomStringsApp{
 	private void startProgram() {
 		JFrame window = new JFrame("Radom Strings");
 		RandomStringsPanel content = new RandomStringsPanel("Hello World");
-		content.addMouseListener(new RepaintOnClick());
+		/*
+		 * Using separate class the implements mouse interfaces
+		 */
+		//content.addMouseListener(new RepaintOnClick());
+		
+		/*
+		 * Using Adapter class to do the same task
+		 */
+		content.addMouseListener( new MouseAdapter() { 
+			public void mousePressed(MouseEvent evt) {
+				Component source = (Component)evt.getSource();
+				source.repaint();
+			}
+		});
 		window.setContentPane(content);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLocation((screenWidth/2) - 250, (screenHeight/2) - 180);
