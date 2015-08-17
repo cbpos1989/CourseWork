@@ -15,8 +15,11 @@ public class HelloWorldApplet extends JApplet {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unused")
 	private String message;
+	@SuppressWarnings("unused")
 	private String fontName;
+	@SuppressWarnings("unused")
 	private int fontSize;
 	
 	public void init(){
