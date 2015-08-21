@@ -11,7 +11,9 @@ import javax.swing.JFrame;
 
 
 /**
- * @author User1
+ * App to demonstrate the use of timers and events
+ * 
+ * @author Colm O'Sullivan
  *
  */
 public class SubKillerApp {

@@ -35,4 +35,22 @@ public class Boat {
 		g.setColor(Color.BLUE);
 		g.fillRoundRect(centerX - 40, centerY - 20, 80, 40, 20, 20);
 	}
+	
+	public int getCenterX() {
+		return centerX;
+	}
+
+	public void setCenterX(int centerX) {
+		this.centerX = centerX;
+	}
+
+	public int getCenterY() {
+		return centerY;
+	}
+
+	public void setCenterY(int centerY) {
+		this.centerY = centerY;
+	}
+
+	
 }

@@ -3,8 +3,7 @@
  */
 package com.github.cbpos1989.gui_tutorials.sub_game;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
@@ -12,71 +11,62 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+
+
 /**
+ * Listener Class for SubKiller Demo
+ * 
  * @author Colm O'Sullivan
  *
  */
-public class SubKillerHandler implements MouseListener, KeyListener, FocusListener, ActionListener {
+public class SubKillerHandler implements MouseListener, KeyListener, FocusListener{
 
 	private SubKillerPanel skPanel;
-	private Boat boat;
-	private Bomb bomb;
-	private Submarine sub;
+	Boat boat;
+	Bomb bomb;
+	Submarine sub;
 	
 	public SubKillerHandler(SubKillerPanel skPanel){
 		this.skPanel = skPanel;
-		
-		ActionListener action = new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				if (boat != null){
-					
-				}
-			}
-		};
 	}
 	
 	/* (non-Javadoc)
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 * Start timer when focus gained
 	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+	public void focusGained(FocusEvent evt) {
+		skPanel.timer.start();
+		skPanel.repaint();
 	}
 
 	/* (non-Javadoc)
-	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
+	 * stops the timer when focus lost
 	 */
 	@Override
-	public void focusGained(FocusEvent e) {
-		// TODO Auto-generated method stub
-
+	public void focusLost(FocusEvent evt) {
+		skPanel.timer.stop();
+		skPanel.repaint();
 	}
 
 	/* (non-Javadoc)
-	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
+	 *Allows the user to use left and right arrows to move and down to drop bomb.
 	 */
 	@Override
-	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
-	 */
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
-	 */
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public void keyPressed(KeyEvent evt) {
+		int code = evt.getKeyCode();
+		
+		switch(code) {
+		case KeyEvent.VK_LEFT:
+			boat.setCenterX(boat.getCenterX() - 15);
+			break;
+		case KeyEvent.VK_RIGHT:
+			boat.setCenterX(boat.getCenterX() + 15);
+			break;
+		case KeyEvent.VK_DOWN:
+			if (!bomb.isFalling()) {
+				bomb.setFalling(true);
+			}
+		}
 
 	}
 
@@ -84,54 +74,44 @@ public class SubKillerHandler implements MouseListener, KeyListener, FocusListen
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public void keyReleased(KeyEvent evt) {}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
+	@Override
+	public void keyTyped(KeyEvent evt) {}
+	
+	/* (non-Javadoc)
+	 * Check if user clicks on the panel
+	 */
+	@Override
+	public void mousePressed(MouseEvent evt) {
+		skPanel.requestFocus();
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
-	 */
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseClicked(MouseEvent evt) {}
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseReleased(MouseEvent evt) {}
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseEntered(MouseEvent evt) {}
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
 	 */
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseExited(MouseEvent evt) {}
 
 }
