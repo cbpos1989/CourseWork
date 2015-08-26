@@ -31,7 +31,7 @@ public class SubKillerPanel extends JPanel {
 	public SubKillerPanel(){
 		skHandler = new SubKillerHandler(this);
 		
-		
+		repaint();
 		ActionListener action = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				if (skHandler.boat != null){
@@ -39,7 +39,7 @@ public class SubKillerPanel extends JPanel {
 					skHandler.bomb.updateForNewFrame();
 					skHandler.sub.updateForNewFrame();
 				}
-					repaint();
+				repaint();
 				
 			}
 		};
@@ -55,7 +55,7 @@ public class SubKillerPanel extends JPanel {
 		
 	}
 	
-	public void paintComponent(Graphics g){
+	public void paint(Graphics g){
 		System.out.println("Action Performed");
 		super.paintComponent(g);
 		
