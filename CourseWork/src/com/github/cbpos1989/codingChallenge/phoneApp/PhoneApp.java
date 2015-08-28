@@ -1,4 +1,4 @@
-package com.github.cbpos1989.phoneApp;
+package com.github.cbpos1989.codingChallenge.phoneApp;
 
 public class PhoneApp {
 	private Phone[] phones = new Phone[3];

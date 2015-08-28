@@ -1,4 +1,4 @@
-package com.github.cbpos1989.phoneApp;
+package com.github.cbpos1989.codingChallenge.phoneApp;
 
 public class Phone {
 	private String manufacturer;
