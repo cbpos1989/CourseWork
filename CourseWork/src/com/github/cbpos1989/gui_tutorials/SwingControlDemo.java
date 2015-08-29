@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.github.cbpos1989.swing_tutorial;
+package com.github.cbpos1989.gui_tutorials;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
