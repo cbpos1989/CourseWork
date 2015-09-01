@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.inheritance;
 
 /**
  * App to demonstrate constructors and inheritance.

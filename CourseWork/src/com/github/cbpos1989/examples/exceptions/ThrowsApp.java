@@ -1,4 +1,4 @@
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.exceptions;
 
 public class ThrowsApp{
 	public static void main(String[] args){

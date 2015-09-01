@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.basics;
 
 /**
  * App to demonstrate how to create a user driven menu.

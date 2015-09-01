@@ -1,7 +1,7 @@
 /**
  *  App used to demonstrate inheritance and object oriented programming. 
  */
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.inheritance;
 
 /**
  * @author cbpos1989

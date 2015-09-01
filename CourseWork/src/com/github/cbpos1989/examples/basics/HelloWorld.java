@@ -1,4 +1,4 @@
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.basics;
 
 /**
  * 

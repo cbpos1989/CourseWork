@@ -1,7 +1,7 @@
 /**
  * App to demonstrate the use of char variables and command line arguments.
  */
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.iteration;
 
 /**
  * @author cbpos1989

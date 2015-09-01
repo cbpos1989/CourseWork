@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.operators;
 
 /**
  * App to demonstrate different types of operators used in if/else statements.

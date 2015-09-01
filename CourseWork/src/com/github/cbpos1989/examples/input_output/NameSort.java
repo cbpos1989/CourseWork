@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.github.cbpos1989.examples;
+package com.github.cbpos1989.examples.input_output;
 
 /**
  * App that creates a file (namerandom.txt) with 15 random names, 
