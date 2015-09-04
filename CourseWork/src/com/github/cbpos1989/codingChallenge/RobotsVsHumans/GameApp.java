@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.cbpos1989.codingChallenge;
+package com.github.cbpos1989.codingChallenge.RobotsVsHumans;
 
 /**
  *  App to demonstrate difference between static and non-static, inheritance and object orientated programming.
@@ -16,7 +16,7 @@ import java.util.Random;
 public class GameApp{
 	private static final int MAX_NUMBER_LIFEFORMS = 1000;
    	private static final int MAX_NUMBER_ROBOTS = 500;
-	private Lifeforms[] lifeforms = new Lifeforms[MAX_NUMBER_LIFEFORMS];
+	private Lifeform[] lifeforms = new Lifeform[MAX_NUMBER_LIFEFORMS];
 	private static int totalRobotPower = 0;
 	private static int totalHumanPower = 0;
     
@@ -55,15 +55,15 @@ public class GameApp{
     		for (int i = 0; i < MAX_NUMBER_ROBOTS; ++i) {
         		String model = new GameApp().randomGenerator()%2 == 0 ? "Type A" : "Type B";
           		int num = new GameApp().randomGenerator() + i;
-        		lifeforms[i] = new Robit(new GameApp().randomGenerator(), i + " " + num, model);
+        		lifeforms[i] = new Robot(new GameApp().randomGenerator(), i + " " + num, model);
         	}
         
         	for (int i = MAX_NUMBER_ROBOTS; i < lifeforms.length; ++i) {
             		int num = new GameApp().randomGenerator() + i;
-        		lifeforms[i] = new Humann(new GameApp().randomGenerator(), i + " " + num, "Agent Smith number " + i);
+        		lifeforms[i] = new Human(new GameApp().randomGenerator(), i + " " + num, "Agent Smith number " + i);
         	}
 
-		for(Lifeforms lf : lifeforms){
+		for(Lifeform lf : lifeforms){
 			System.out.println(lf);
 		}
 	}
@@ -80,15 +80,15 @@ public class GameApp{
 	}
 }
 
-class Lifeforms{
+class Lifeform{
 	private int power = -1;
 	private String uniqueID = "Unknown";
 
-	public Lifeforms(){
+	public Lifeform(){
 
 	}
 
-	public Lifeforms(int power, String uniqueID){
+	public Lifeform(int power, String uniqueID){
 		this.power = power;
 		this.uniqueID = uniqueID;
 	}
@@ -99,13 +99,13 @@ class Lifeforms{
   	
 }
 
-class Robit extends Lifeforms{
+class Robot extends Lifeform{
 	private String model = null;
 	
-	public Robit(){
+	public Robot(){
 	}
 
-	public Robit(int power, String uniqueID, String model){
+	public Robot(int power, String uniqueID, String model){
 		super(power, uniqueID);
 		this.model = model;
 		GameApp ga = new GameApp();
@@ -118,13 +118,13 @@ class Robit extends Lifeforms{
 }
 
 
-class Humann extends Lifeforms{
+class Human extends Lifeform{
 	String name = "John Connor";
 
-	public Humann(){
+	public Human(){
 	}
 
-	public Humann(int power, String uniqueID, String name){
+	public Human(int power, String uniqueID, String name){
 		super(power, uniqueID);
 		this.name = name;
 		GameApp ga = new GameApp();
