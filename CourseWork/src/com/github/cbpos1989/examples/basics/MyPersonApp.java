@@ -4,7 +4,9 @@
 package com.github.cbpos1989.examples.basics;
 
 /**
- * @author User1
+ * Class to demonstrate the basics of creating an object in java
+ * 
+ * @author Colm O'Sullivan
  *
  */
 public class MyPersonApp{
