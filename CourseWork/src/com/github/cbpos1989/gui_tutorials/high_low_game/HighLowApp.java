@@ -29,7 +29,6 @@ public class HighLowApp {
 	}
 
 	private void startProgram() {
-		System.out.println("\u0001");
 		JFrame window = new JFrame("HighLow Game");
 		HighLowGUI content = new HighLowGUI();
 		window.setContentPane(content);

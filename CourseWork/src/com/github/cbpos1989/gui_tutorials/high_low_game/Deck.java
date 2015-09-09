@@ -51,4 +51,22 @@ public class Deck {
 		cardsUsed = 0;
 	}
 	
+	public int cardsLeft() {
+		return deck.length - cardsUsed;
+	}
+	
+	
+	public Card dealCard(){
+		if (cardsUsed == deck.length) {
+			throw new IllegalStateException("No cards left in the deck");
+		}
+		
+		cardsUsed++;
+		return deck[cardsUsed -1];
+	}
+	
+	public boolean hasJokers(){
+		return (deck.length == 54);
+	}
+	
 }

@@ -6,6 +6,7 @@ package com.github.cbpos1989.gui_tutorials.high_low_game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -62,7 +63,25 @@ public class HighLowGUI extends JPanel {
 	
 	
 	private class CardPanel extends JPanel implements ActionListener{
-
+		Deck deck;
+		Hand hand;
+		String message;
+		
+		boolean gameInProgress;
+		
+		Font bigFont;
+		Font smallFont;
+		
+		CardPanel(){
+			setBackground(new Color(0,120,0));
+			setForeground(Color.WHITE);
+			smallFont = new Font("SansSerif", Font.PLAIN, 12);
+			bigFont = new Font("Serif", Font.BOLD, 14);
+			setPreferredSize(new Dimension(370,150));
+			
+			
+		}
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
