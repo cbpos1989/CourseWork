@@ -27,7 +27,7 @@ public class Deck {
 		int cardCt = 0;
 		
 		for (int suit = 0; suit <= 3; ++suit) {
-			for (int value = 1;suit <= 13; ++value) {
+			for (int value = 1;value <= 13; ++value) {
 				deck[cardCt] = new Card(suit, value);
 				cardCt++;
 			}
