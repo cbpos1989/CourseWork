@@ -1,5 +1,10 @@
 package com.github.cbpos1989.codingChallenge.banking_app;
-
+/**
+ *  Class to hold state and behaviour for an Business customer Object
+ *   
+ * @author Colm O'Sullivan, Alex Scanlan, Joe Murphy & Przemek Stepien (Sam)
+ *
+ */
 public class Business extends Customer{
 
 	//States of Business class

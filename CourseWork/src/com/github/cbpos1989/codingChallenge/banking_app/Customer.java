@@ -1,5 +1,10 @@
 package com.github.cbpos1989.codingChallenge.banking_app;
-
+/**
+ *  Class to hold state and behaviour for an customer Object
+ *   
+ * @author Colm O'Sullivan, Alex Scanlan, Joe Murphy & Przemek Stepien (Sam)
+ *
+ */
 import java.util.ArrayList;
 
 
