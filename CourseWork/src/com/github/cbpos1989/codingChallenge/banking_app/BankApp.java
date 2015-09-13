@@ -6,7 +6,7 @@ import java.util.Random;
 
 /**
  *  App made as part of one day code challenge on the course.
- * @author Colm O'Sullivan, Alex Scanlan, Joe Murphy & Sam
+ * @author Colm O'Sullivan, Alex Scanlan, Joe Murphy & Przemek Stepien (Sam)
  *
  */
 public class BankApp{

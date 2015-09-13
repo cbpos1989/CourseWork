@@ -1,6 +1,11 @@
 package com.github.cbpos1989.codingChallenge.banking_app;
 
-
+/**
+ *  Class to hold state and behaviour for an Account Object
+ *   
+ * @author Colm O'Sullivan, Alex Scanlan, Joe Murphy & Przemek Stepien (Sam)
+ *
+ */
 public class Account{
 
 	//state
