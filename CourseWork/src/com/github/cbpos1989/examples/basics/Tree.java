@@ -4,7 +4,9 @@
 package com.github.cbpos1989.examples.basics;
 
 /**
- * @author User1
+ * Class to hold state and behaviour for a tree object
+ * 
+ * @author Colm O'Sullivan & James MacMahon
  *
  */
 public class Tree {

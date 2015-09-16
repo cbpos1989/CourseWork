@@ -4,7 +4,9 @@
 package com.github.cbpos1989.examples.basics;
 
 /**
- * @author User1
+ * Class to run TreeApp main method
+ * 
+ * @author Colm O'Sullivan & James MacMahon
  *
  */
 public class TreeApp {
