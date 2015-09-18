@@ -1,0 +1,6 @@
+*H* This is the heading identifier
+*B* This is where the user will enter the main body of text covering the exposition of the game.
+*B* They can use the star B identifer to idicate that this text is part of the main body
+*Q* This identifier will allow the creator to add questions for the user to choose.
+*Q* Each question will be given an number in a sequenced order
+*Q* The user will then have to choose a question to progress the story
