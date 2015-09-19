@@ -27,7 +27,9 @@ public class AdventureApp {
 	
 	private String heading = "";
 	private String body = "";
+	private int questID = -1;
 	private ArrayList<String> questions = new ArrayList<String>();
+	private ArrayList<Quest> quests = new ArrayList<Quest>();
 	/**
 	 * @param args
 	 */
@@ -40,6 +42,9 @@ public class AdventureApp {
 		userMenu();
 	}
 	
+	/**
+	 * Main Menu for the game.
+	 */
 	private void userMenu(){
 		boolean invalidInput = true;
 		Scanner scan = new Scanner(System.in);
@@ -49,11 +54,11 @@ public class AdventureApp {
 			int userChoice = scan.nextInt();
 		
 			if(userChoice == 1){
-				System.out.println("1");
+				//System.out.println("1");
 				invalidInput = false;
 				loadFile();
 			} else if(userChoice == 2){
-				System.out.println("2");
+				//System.out.println("2");
 				invalidInput = false;
 				runGame();
 			} else {
@@ -64,6 +69,9 @@ public class AdventureApp {
 		scan.close();
 	}
 	
+	/**
+	 * Menu for the user to enter file name of text file used to create the game.
+	 */
 	private void loadFile(){
 		boolean invalidInput = true;
 		Scanner scan = new Scanner(System.in);
@@ -76,14 +84,23 @@ public class AdventureApp {
 				invalidInput = false;
 				readTextFile(fileName);
 			} catch(FileNotFoundException fnfe){
-				fnfe.printStackTrace();
+				System.out.println("File not Found!");
+				invalidInput = true;
 			} catch (IOException ioe){
-				ioe.printStackTrace();
+				System.out.println(ioe);
+				invalidInput = true;
 			}
 		} while(invalidInput);
 		scan.close();
 	}
 	
+	/**
+	 * Method to read data from user given text file, 
+	 * data is sorted by identifiers and used to create a new Quest object.
+	 * @param fileName a file name that the user inputs.
+	 * @throws IOException if the file is not found or an invalid identifier is found 
+	 * and exception is thrown.
+	 */
 	private void readTextFile(String fileName) throws IOException {
 		fileName = FOLDER_PATH.concat(fileName);
 		Path path = Paths.get(fileName);
@@ -95,20 +112,45 @@ public class AdventureApp {
       			while ((line = reader.readLine()) != null) {
       				identifier = line.substring(0, 3);
       				switch(identifier){
+      				case "#ID": 
+      					this.questID = formatQuestID(line); break;
       				case "*H*": 
       					this.heading += formatHeading(line); break;
       				case "*B*": 
       					this.body += "\n" + formatBody(line); break;
       				case "*Q*":
       					this.questions.add(formatQuestion(line,++index)); break;
+      				case "***":
+      					addNewQuest(this.heading,this.body,this.questions, this.questID);
+      					index = 0; break;
       				default: 
-      					System.out.println("Invalid Identifier used"); break;
+      					throw new IOException("Invalid Identifier used in text file");
       				}
       			}      
     		}
-    		
+    		System.out.println("Text file successfully loaded");
     		userMenu();
   	}
+	
+	private void addNewQuest(String heading, String body, ArrayList<String> questions, int questID){
+		quests.add(new Quest(heading,body,questions,questID));
+		
+		//Reset temporary variables so the next quest details can be stored
+		this.heading = "";
+		this.body = "";
+		this.questions.removeAll(questions);
+	}
+	
+	private int formatQuestID(String questID) throws IOException{
+		questID = questID.substring(4, questID.length());
+
+		try{
+			int id = Integer.parseInt(questID);
+			return id;
+		} catch (NumberFormatException nfe){
+			throw new IOException("Invalid Quest ID");
+		}
+	}
 	
 	private String formatHeading(String heading){
 		heading = heading.substring(4,heading.length());
@@ -127,7 +169,36 @@ public class AdventureApp {
 	}
 
 	private void runGame(){
-		Quest quest = new Quest(this.heading, this.body, this.questions);
-		System.out.println(quest);
+		if(quests.size() == 0){
+			System.out.println("No adventure found!, txt file not loaded.");
+			userMenu();
+		}
+		
+		System.out.println(quests.get(0) + "\n");
+		System.out.println(quests.get(1) + "\n");
+		System.out.println(quests.get(2) + "\n");
+	}
+	
+	private void questMenu(){
+		boolean invalidInput = true;
+		Scanner scan = new Scanner(System.in);
+		do{
+			System.out.println("Enter Your Choice: ");
+			int userChoice = scan.nextInt();
+		
+			if(userChoice == 1){
+				//System.out.println("1");
+				invalidInput = false;
+				loadFile();
+			} else if(userChoice == 2){
+				//System.out.println("2");
+				invalidInput = false;
+				runGame();
+			} else {
+				System.out.println("Invalid Choice");
+				invalidInput = true;
+			}
+		} while(invalidInput);
+		scan.close();
 	}
 }

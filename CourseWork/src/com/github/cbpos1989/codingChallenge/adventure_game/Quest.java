@@ -15,25 +15,25 @@ public class Quest {
 	private String heading;
 	private String body;
 	private ArrayList<String> questions;
-	private String questionOutput;
+	private String questionOutput = "";
+	private int questID;
 	
 	
 	public Quest(){
-		this("Heading","Body",null);
+		this("Heading","Body",null, -1);
 	}
 	
-	public Quest(String heading, String body, ArrayList<String> questions){
+	public Quest(String heading, String body, ArrayList<String> questions, int questID){
 		this.heading = heading;
 		this.body = body;
 		this.questions = questions;
+		this.questID = questID;
 		
 		for(String s: questions){
-			questionOutput += "\n" + questions;
+			questionOutput += "\n" + s;
 		}
 		
 	}
-	
-	
 	
 	public String toString(){
 		return this.heading + "\n" + this.body + "\n" + this.questionOutput;
