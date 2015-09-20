@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Quest {
 	private String heading;
 	private String body;
-	private ArrayList<String> questions;
+	private ArrayList<Question> questions;
 	private String questionOutput = "";
 	private int questID;
 	
@@ -23,18 +23,22 @@ public class Quest {
 		this("Heading","Body",null, -1);
 	}
 	
-	public Quest(String heading, String body, ArrayList<String> questions, int questID){
+	public Quest(String heading, String body, ArrayList<Question> questions, int questID){
 		this.heading = heading;
 		this.body = body;
 		this.questions = questions;
 		this.questID = questID;
 		
-		for(String s: questions){
-			questionOutput += "\n" + s;
+		for(Question q: questions){
+			questionOutput += "\n" + q.getDialog();
 		}
 		
 	}
 	
+	public ArrayList<Question> getQuestions() {
+		return questions;
+	}
+
 	public String toString(){
 		return this.heading + "\n" + this.body + "\n" + this.questionOutput;
 	}

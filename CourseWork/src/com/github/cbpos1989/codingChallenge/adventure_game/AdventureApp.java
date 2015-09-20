@@ -28,7 +28,7 @@ public class AdventureApp {
 	private String heading = "";
 	private String body = "";
 	private int questID = -1;
-	private ArrayList<String> questions = new ArrayList<String>();
+	private ArrayList<Question> questions = new ArrayList<Question>();
 	private ArrayList<Quest> quests = new ArrayList<Quest>();
 	/**
 	 * @param args
@@ -53,13 +53,14 @@ public class AdventureApp {
 			System.out.println("1) Load new .txt file \n2) Start new Adventure \nEnter Choice: ");
 			int userChoice = scan.nextInt();
 		
-			if(userChoice == 1){
+			if (userChoice == 1) {
 				//System.out.println("1");
 				invalidInput = false;
 				loadFile();
-			} else if(userChoice == 2){
+			} else if (userChoice == 2) {
 				//System.out.println("2");
 				invalidInput = false;
+				
 				runGame();
 			} else {
 				System.out.println("Invalid Choice");
@@ -83,10 +84,10 @@ public class AdventureApp {
 			try{
 				invalidInput = false;
 				readTextFile(fileName);
-			} catch(FileNotFoundException fnfe){
+			} catch (FileNotFoundException fnfe) {
 				System.out.println("File not Found!");
 				invalidInput = true;
-			} catch (IOException ioe){
+			} catch (IOException ioe) {
 				System.out.println(ioe);
 				invalidInput = true;
 			}
@@ -119,7 +120,7 @@ public class AdventureApp {
       				case "*B*": 
       					this.body += "\n" + formatBody(line); break;
       				case "*Q*":
-      					this.questions.add(formatQuestion(line,++index)); break;
+      					this.questions.add(new Question(formatQuestion(line,++index),index,2)); break;
       				case "***":
       					addNewQuest(this.heading,this.body,this.questions, this.questID);
       					index = 0; break;
@@ -132,7 +133,7 @@ public class AdventureApp {
     		userMenu();
   	}
 	
-	private void addNewQuest(String heading, String body, ArrayList<String> questions, int questID){
+	private void addNewQuest(String heading, String body, ArrayList<Question> questions, int questID){
 		quests.add(new Quest(heading,body,questions,questID));
 		
 		//Reset temporary variables so the next quest details can be stored
@@ -169,36 +170,39 @@ public class AdventureApp {
 	}
 
 	private void runGame(){
-		if(quests.size() == 0){
+		if (quests.size() == 0) {
 			System.out.println("No adventure found!, txt file not loaded.");
 			userMenu();
+		} else {
+			displayQuest(quests.get(0));
 		}
-		
-		System.out.println(quests.get(0) + "\n");
-		System.out.println(quests.get(1) + "\n");
-		System.out.println(quests.get(2) + "\n");
 	}
 	
-	private void questMenu(){
+	private void displayQuest(Quest quest){
+		System.out.println(quest + "\n");
+		questMenu(quest);
+	}
+	
+	private void questMenu(Quest quest){
 		boolean invalidInput = true;
 		Scanner scan = new Scanner(System.in);
 		do{
 			System.out.println("Enter Your Choice: ");
 			int userChoice = scan.nextInt();
-		
-			if(userChoice == 1){
-				//System.out.println("1");
-				invalidInput = false;
-				loadFile();
-			} else if(userChoice == 2){
-				//System.out.println("2");
-				invalidInput = false;
-				runGame();
-			} else {
-				System.out.println("Invalid Choice");
-				invalidInput = true;
+			
+			for (Question q : quest.getQuestions()) {
+				if (q.getIndex() == userChoice) {
+					int nextQuest = q.getQuestID();
+					
+				}
 			}
 		} while(invalidInput);
 		scan.close();
+	}
+	
+	private void findQuest(int index){
+		for(Quest q: quests){
+			
+		}
 	}
 }
