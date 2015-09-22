@@ -1,0 +1,6 @@
+for
+alex
+int class thing
+char class foo class bar
+whatever continue do foo 
+double foobar bar print dog
