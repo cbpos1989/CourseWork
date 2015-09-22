@@ -193,10 +193,11 @@ public class AdventureApp {
 			for (Question q : quest.getQuestions()) {
 				if (q.getIndex() == userChoice) {
 					int nextQuest = q.getQuestID();
-					
 				}
 			}
 		} while(invalidInput);
+		
+		//findQuest();
 		scan.close();
 	}
 	
