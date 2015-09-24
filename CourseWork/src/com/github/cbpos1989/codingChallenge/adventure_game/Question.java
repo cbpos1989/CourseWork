@@ -23,6 +23,7 @@ public class Question {
 		this.dialog = dialog;
 		this.index = index;
 		this.questID = questID;
+		
 	}
 
 	public String getDialog() {

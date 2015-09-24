@@ -185,6 +185,7 @@ public class AdventureApp {
 	
 	private void questMenu(Quest quest){
 		boolean invalidInput = true;
+		int nextQuest = -1;
 		Scanner scan = new Scanner(System.in);
 		do{
 			System.out.println("Enter Your Choice: ");
@@ -192,18 +193,28 @@ public class AdventureApp {
 			
 			for (Question q : quest.getQuestions()) {
 				if (q.getIndex() == userChoice) {
-					int nextQuest = q.getQuestID();
+					nextQuest = q.getQuestID();
 				}
 			}
+			
+			if(nextQuest > 0){
+				findQuest(nextQuest);
+				invalidInput = false;
+			} else {
+				System.out.println("No valid quest found");
+			}
+			
 		} while(invalidInput);
 		
-		//findQuest();
+		
 		scan.close();
 	}
 	
 	private void findQuest(int index){
-		for(Quest q: quests){
-			
+		for (Quest q: quests) {
+			if (q.getQuestID() == index) {
+				displayQuest(q);
+			}
 		}
 	}
 }

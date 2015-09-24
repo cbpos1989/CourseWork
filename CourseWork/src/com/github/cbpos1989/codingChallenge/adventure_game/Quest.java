@@ -19,6 +19,8 @@ public class Quest {
 	private int questID;
 	
 	
+	
+
 	public Quest(){
 		this("Heading","Body",null, -1);
 	}
@@ -28,7 +30,7 @@ public class Quest {
 		this.body = body;
 		this.questions = questions;
 		this.questID = questID;
-		
+		System.out.println(this.questID);
 		for(Question q: questions){
 			questionOutput += "\n" + q.getDialog();
 		}
@@ -38,8 +40,14 @@ public class Quest {
 	public ArrayList<Question> getQuestions() {
 		return questions;
 	}
+	
+	public int getQuestID() {
+		return questID;
+	}
 
 	public String toString(){
 		return this.heading + "\n" + this.body + "\n" + this.questionOutput;
 	}
+	
+
 }
