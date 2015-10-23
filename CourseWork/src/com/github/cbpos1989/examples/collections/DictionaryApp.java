@@ -13,7 +13,7 @@ public class DictionaryApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		HashMap<String, String> dictionary
+	
 
 	}
 
